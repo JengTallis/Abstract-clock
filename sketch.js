@@ -1,36 +1,39 @@
+
+
 function setup() {
-    createCanvas(800, 620); // make an HTML canvas element width x height pixels
+  createCanvas(880, 880, WEBGL);
 }
 
 function draw() {
-    background(225);
-    //    textSize(32);
-    //    fill(180);
-    //    text(hour(), 10, 30);
-    //    fill(100);
-    //    text(minute(), 10, 60);
-    //    fill(0);
-    //    text(second(), 10, 90);
+    background(200);
+    let time = millis();
+    rotateX(time / 2020);
+    rotateZ(time / 2020);
+    ambientLight(300);
 
-    yPos = second() * height / 60;
-    line(0, yPos, width, yPos);
+  
+    h = height / 2;
+    w = width / 2;
+
+    yPos = second() * h / 80;
+    line(0, yPos, w, yPos);
 
     fill(255, 0, 0, 63);
-    rect(0, 0, width, yPos);
+    rect(0, 0, w, yPos);
 
 
-    xPos = minute() * width / 60;
-    line(xPos, 0, xPos, height);
+    xPos = second() * w / 80;
+    line(xPos, 0, xPos, h / 2);
 
     fill(255, 200, 0, 80);
-    rect(0, 0, xPos, height);
+    rect(0, 0, xPos, h / 2);
 
     fill(0, 255, 255, 60);
-    ellipse(width / 2, height, Math.floor(hour() / 48 * 2 * width), Math.floor(minute() / 60 * 2 * height));
+    ellipse(w / 2 , h, Math.floor(hour() / 48 * 2 * w), Math.floor(minute() / 60 * 2 * h));
 
     fill(0, 0, 255, 60);
     for (i = 0; i < hour(); i++) {
-        circle(Math.floor((minute() / 100 * (i + 1) * height / 4) * (i * minute() % 37 / 27) + 10), Math.floor((minute() / 100 * (i + 1) * width / 4) * (i * minute() % 43 / 39) + 10), 3 + 6 * i);
+        circle(Math.floor((second() / 100 * (i + 1) * h / 4) * (i * minute() % 37 / 27) + 10), Math.floor((second() / 100 * (i + 1) * w / 4) * (i * minute() % 43 / 39) + 10), 3 + 6 * i);
     }
 
 }
