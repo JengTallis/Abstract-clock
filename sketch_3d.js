@@ -12,8 +12,8 @@ function draw() {
     ambientLight(300);
 
   
-    h = height / 2;
-    w = width / 2;
+    h = height / 2 * second() / 60;
+    w = width / 2 * second() / 60;
 
     yPos = second() * h / 80;
     line(0, yPos, w, yPos);
